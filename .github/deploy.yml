@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+# Trigger the workflow on push to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js (if you need to run a build step for your site)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # You can specify the version that fits your project
+
+      # Step 3: Install dependencies (if your project has a package.json)
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Step 4: Build the project (if required for your site)
+      # (If you're using a build tool like Jekyll or React, include the build step here)
+      - name: Build project
+        run: |
+          # Add a build command if you have one, for example:
+          # npm run build
+
+      # Step 5: Deploy the content to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages  # This is the branch that GitHub Pages will serve
+          folder: .  # You can specify the folder to deploy if needed
