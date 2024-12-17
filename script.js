@@ -1,3 +1,15 @@
+// Function to open the side navigation
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  // Function to close the side navigation
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  
+  // Adding an event listener to the heart emoji
+  document.getElementById("heart").addEventListener("click", openNav);
 // Function to fetch the user's country and display the date, time, and country
 async function getUserData() {
     try {
