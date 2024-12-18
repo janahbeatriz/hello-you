@@ -10,6 +10,7 @@ function openNav() {
   
   // Adding an event listener to the heart emoji
   document.getElementById("heart").addEventListener("click", openNav);
+  document.getElementById("twerk").addEventListener("click", openNav);
 // Function to fetch the user's country and display the date, time, and country
 async function getUserData() {
     try {
