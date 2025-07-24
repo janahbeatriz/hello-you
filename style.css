@@ -1,72 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
-
-/* style.css */
-
-/* Basic page styling */
 body {
-  font-family: Agbalumo, sans-serif;
+  font-family: 'Agbalumo', sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   background-color: #f4f4f4;
-}
-
-/* Centered container for content */
-.container {
-  text-align: center;
-}
-
-/* Style for heart emoji */
-#heart {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.cute-text {
-  font-size: 20px;
-  text-align: center;
-  font-family: "Agbalumo", serif;
-  font-weight: 400;
-  font-style: normal;
-  color: rgb(131, 69, 25);
-}
-
-#heart:hover {
-  transform: scale(1.2);
-}
-
-/* Emoji container styling */
-.emoji-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Side Navigation */
+.container {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+img, picture {
+  max-width: 100%;
+  height: auto;
+}
+
+.cute-text {
+  font-size: 20px;
+  color: rgb(131, 69, 25);
+  margin: 10px 0;
+}
+
+/* Side Nav */
 .sidenav {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
   top: 0;
   right: 0;
   background-color: #964772;
   overflow-x: hidden;
   transition: 0.3s;
   padding-top: 60px;
-  color: white;
+  z-index: 9999;
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
+  padding: 8px 32px;
   font-size: 25px;
   color: white;
   display: block;
-  transition: 0.3s;
   text-align: center;
 }
 
@@ -79,28 +58,71 @@ body {
   top: 0;
   left: 10px;
   font-size: 36px;
-  margin-left: 50px;
+}
+
+#heart {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#heart:hover {
+  transform: scale(1.2);
 }
 
 .bouncing-text {
-  font-size: 50px;
+  font-size: 40px;
   color: #e2d069;
-  font-weight: bold;
   animation: bounce 2s infinite ease-in-out;
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .bouncing-text {
+    font-size: 28px;
   }
-  50% {
-    transform: translateY(-30px);
+
+  .cute-text {
+    font-size: 16px;
+  }
+
+  img {
+    width: 90%;
+    max-width: 250px;
   }
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   width: 100%;
-  text-align: center;
+  max-width: 1200px;
+  box-sizing: border-box;
+  padding: 20px;
 }
+
+/* Make each container take half width on desktop, full on mobile */
+.flex-wrapper .container {
+  flex: 1 1 45%;
+  max-width: 500px;
+}
+
+/* Stack on small screens */
+@media screen and (max-width: 768px) {
+  .flex-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flex-wrapper .container {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
